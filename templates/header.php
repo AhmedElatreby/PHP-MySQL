@@ -1,3 +1,13 @@
+<?php 
+    session_start();
+    if($_SERVER["QUERY_STRING"] == ""){
+        unset($_SESSION["name"]);
+    }
+
+    $name = $_SESSION["name"] ?? "Guest";
+
+?>
+
 <head>
     <title>Pizza</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -30,6 +40,7 @@
         <div class="container">
             <a href="index.php" class="brand-logo brand-text"> Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
+                <li class="grey-text">Hello <?php echo htmlspecialchars($name);?></li>
                 <li><a href="add.php" class="btn brand z-depth-0">Add a Pizza</a></li>
             </ul>
         </div>
